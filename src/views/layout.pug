@@ -1,0 +1,50 @@
+doctype html
+html(lang="en")
+  head
+    title My App
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    //- link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href=`/css/style.css`)
+  body
+    div(class='min-h-screen flex flex-col')
+      //- Navbar
+      nav(class='bg-black text-white p-4 flex justify-between items-center')
+        if activePage == 'dashboard'
+          img(src='../images/full-logo1.jpg', alt='PodVibe Logo' class='h-20 rounded-lg ms-4')
+        else
+          img(src='../../images/full-logo1.jpg', alt='PodVibe Logo' class='h-16 rounded-lg')
+
+        ul(class='flex space-x-4')
+          li
+            a(href='/about' class='hover:underline') About
+          li
+            a(href='/users/logout' class='hover:underline') Logout
+
+      //- Main Content with Sidebar
+      div(class='flex flex-1 w-full')
+        //- Sidebar
+        aside(class='bg-[#1b1b1b] text-white p-4 w-[18%]')
+          ul(class='space-y-2')
+            li#dashboard_anch
+              a(href='/' class=`block py-2 px-4 hover:bg-gray-800 rounded hover:border-green-700 hover:border-l-8 ${activePage === 'dashboard' ? 'bg-gray-800 border-green-700 border-l-8' : ''}`) Dashboard
+            li#albums_anch
+              a(href='/albums' class=`block py-2 px-4 hover:bg-gray-800 rounded hover:border-green-700 hover:border-l-8 ${activePage === 'albums' ? 'bg-gray-800 border-green-700 border-l-8' : ''}`) Albums
+            li#playlists_anch
+              a(href='/playlists' class=`block py-2 px-4 hover:bg-gray-800 rounded hover:border-green-700 hover:border-l-8 ${activePage === 'playlists' ? 'bg-gray-800 border-green-700 border-l-8' : ''}`) Playlists
+            li#audios_anch
+              a(href='/audios' class=`block py-2 px-4 hover:bg-gray-800 rounded hover:border-green-700 hover:border-l-8 ${activePage === 'audios' ? 'bg-gray-800 border-green-700 border-l-8' : ''}`) Audios
+            li#users_anch
+              a(href='/users' class=`block py-2 px-4 hover:bg-gray-800 rounded hover:border-green-700 hover:border-l-8 ${activePage === 'users' ? 'bg-gray-800 border-green-700 border-l-8' : ''}`) Users
+        //- Main Content Area
+        main(class='flex-1 p-6 bg-gray-100 w-[82%]')
+          //-content is external html
+          block content 
+    
+      //- Footer
+      footer(class='bg-black text-white p-4 text-center')
+        p &copy; 2024 Podvibe
+
+    //- script(src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous')
+
+      

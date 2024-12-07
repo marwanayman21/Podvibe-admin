@@ -1,0 +1,58 @@
+extends ../layout.pug
+block content
+    //- Form Container
+    div(class='w-full max-w-5xl bg-white shadow-md rounded-lg p-6 mx-auto')
+      h1(class='text-2xl font-bold mb-4') 
+        |Create New User
+            
+      //- enctype='multipart/form-data -> tells it to accept data type images
+      form(action='/users/create', method='post')
+        //- userName
+        div(class='mb-4')
+          label(for='name' class='block text-gray-700 font-bold mb-2') Name
+          input(type='text', id='name', name='name', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- email
+        div(class='mb-4')
+          label(for='email' class='block text-gray-700 font-bold mb-2') E-mail
+          input(type='text', id='email', name='email', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- password
+        div(class='mb-4')
+          label(for='password' class='block text-gray-700 font-bold mb-2') Password
+          input(type='text', id='password', name='password', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- gender
+        div(class='mb-4')
+          label(for='gender' class='block text-gray-700 font-bold mb-2') Gender
+          select(id='gender', name='gender', required, class='w-full p-2 border border-gray-300 rounded')
+            option(value='') Select Gender
+            option(value='male') Male
+            option(value='female') Female
+            option(value='other') Other
+
+        //- date
+        div(class='mb-4')
+          label(for='date' class='block text-gray-700 font-bold mb-2') Date
+          input(type='text', id='date', name='date', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- month
+        div(class='mb-4')
+          label(for='month' class='block text-gray-700 font-bold mb-2') Month
+          input(type='text', id='month', name='month', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- year
+        div(class='mb-4')
+          label(for='year' class='block text-gray-700 font-bold mb-2') Year
+          input(type='text', id='year', name='year', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- isAdmin
+        div(class='mb-4')
+          label(for='isAdmin' class='block text-gray-700 font-bold mb-1') Role
+          select(id='isAdmin', name='isAdmin', required, class='w-full p-1 border border-gray-300 rounded')
+            option(value='false') User
+            option(value='true') Admin
+
+        //- Submit Button
+        div(class='flex justify-end')
+          button(type='submit', class='bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800') Submit

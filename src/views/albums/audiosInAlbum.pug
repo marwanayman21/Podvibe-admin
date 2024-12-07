@@ -1,0 +1,37 @@
+extends ../layout.pug
+block content
+    div(class='w-full max-w-5xl min-h-[100%] bg-white shadow-md rounded-lg p-6 mx-auto')
+      h1(class='text-2xl font-bold mb-4') 
+        |Audios inside  
+        span(class='text-2xl text-green-600')= album.name
+        |'s  Album
+         
+      //- Check if there are albums
+      if audios.length > 0
+        //- albums Table
+        table(class='w-full max-w-5xl bg-white shadow-md rounded-lg overflow-hidden mb-8')
+          thead(class='bg-gray-800 text-white')
+            tr
+              //- first field is for images 
+              th(class='p-4 text-left')         
+              th(class='p-4 text-left') Audio Name
+              th(class='p-4 text-left') Description
+              th(class='p-4 text-left') Performer
+              th(class='p-4 text-left') Actions
+
+          tbody
+            each audio, index in audios
+              //- album.audios
+              tr(class=(index % 2 === 0 ? 'bg-gray-100' : 'bg-white'))
+                td(class='p-4')
+                  img(src=audio.image alt=audio.name class='w-20 h-20 object-cover rounded-lg')
+                td(class='p-4')= audio.name
+                td(class='p-4')= audio.desc
+                td(class='p-4')= audio.performer
+                td(class='p-4')
+                  a(href=`/playlists/delete/${audio._id}/${album._id}` class='text-red-500 hover:text-red-700 mr-2 text-3xl font-bold') &#10007;
+      else
+        //- No Albums Warning
+        div(class='w-full max-w-4xl bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative')
+          strong(class='font-bold') Warning!
+          span(class='block sm:inline') &nbsp;No audios found in album. Please add some audios.

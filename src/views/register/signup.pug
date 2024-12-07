@@ -1,0 +1,56 @@
+extends layout.pug
+
+block form
+    //- Form Container
+    div(class='w-full max-w-3xl bg-white shadow-md rounded-lg p-6 pb-[1.9rem]')
+      h1(class='text-2xl font-bold mb-4') Sign Up
+
+      form(method='post')
+        //- name
+        div(class='mb-4')
+          label(for='name' class='block text-gray-700 font-bold mb-1') Name
+          input(type='text', id='name', name='name', required, class='w-full p-1 border border-gray-300 rounded')
+
+        //- Email
+        div(class='mb-4')
+          label(for='email' class='block text-gray-700 font-bold mb-1') Email
+          input(type='email', id='email', name='email', required, class='w-full p-1 border border-gray-300 rounded')
+
+        //- Password
+        div(class='mb-4')
+          label(for='password' class='block text-gray-700 font-bold mb-1') Password
+          input(type='password', id='password', name='password', required, class='w-full p-1 border border-gray-300 rounded')
+
+        //- date
+        div(class='mb-4')
+          label(for='date' class='block text-gray-700 font-bold mb-1') Date
+          input(type='text', id='date', name='date', class='w-full p-1 border border-gray-300 rounded')
+
+        //- month
+        div(class='mb-4')
+          label(for='month' class='block text-gray-700 font-bold mb-1') Month
+          input(type='text', id='month', name='month', required, class='w-full p-1 border border-gray-300 rounded')
+
+        //- year
+        div(class='mb-4')
+          label(for='year' class='block text-gray-700 font-bold mb-1') Year
+          input(type='text', id='year', name='year', required, class='w-full p-1 border border-gray-300 rounded')
+
+        //- gender
+        div(class='mb-4')
+          label(for='gender' class='block text-gray-700 font-bold mb-1') Gender
+          select(id='gender', name='gender', required, class='w-full p-1 border border-gray-300 rounded')
+            option(value='') Select Gender
+            option(value='male') Male
+            option(value='female') Female
+
+        //- isAdmin
+        div(class='mb-4')
+          label(for='isAdmin' class='block text-gray-700 font-bold mb-1') Role
+          select(id='isAdmin', name='isAdmin', required, class='w-full p-1 border border-gray-300 rounded')
+            option(value='true') User
+            option(value='false') Admin
+
+        //- Submit Button
+        div(class='flex justify-end')
+          button(type='submit', class='bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600') Sign Up

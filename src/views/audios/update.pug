@@ -1,0 +1,36 @@
+extends ../layout.pug
+
+block content
+  //- Form Container
+  div(class='w-full max-w-5xl bg-white shadow-md rounded-lg p-6')
+    h1(class='text-2xl font-bold mb-4') Update Audio
+
+    form(method='post' enctype='multipart/form-data')
+      //- Audio Name
+      div(class='mb-4')
+        label(for='name' class='block text-gray-700 font-bold mb-2') Name
+        input(type='text', id='name', name='name', required, value=audio.name, class='w-full p-2 border border-gray-300 rounded')
+
+      //- Performer
+      div(class='mb-4')
+        label(for='performer' class='block text-gray-700 font-bold mb-2') Performer
+        input(type='text', id='performer', name='performer', required, value=audio.performer, class='w-full p-2 border border-gray-300 rounded')
+        
+      //- Description
+      div(class='mb-4')
+        label(for='desc' class='block text-gray-700 font-bold mb-2') Description
+        textarea(id='desc', name='desc', rows='2', required, value=audio.desc, class='w-full p-2 border border-gray-300 rounded')= audio.desc
+
+        //- Audio Image
+      div(class='mb-4')
+        label(for='image' class='block text-gray-700 font-bold mb-2') Audio Image
+        input(type='file', id='image', name='image', accept='image/*', class='w-full p-2 border border-gray-300 rounded')
+        //- Show the existing image
+        if audio.image
+          div(class='mt-2')
+            img(src=audio.image alt=audio.name class='w-16 h-16 object-cover rounded-lg ms-2')
+
+
+      //- Submit Button
+      div(class='flex justify-end')
+        button(type='submit', class='bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800') Update Audio

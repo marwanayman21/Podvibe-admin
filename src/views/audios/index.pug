@@ -1,0 +1,46 @@
+extends ../layout.pug
+block content
+    //- Search Bar
+    div(class='w-full max-w-6xl mb-4')
+      input(type='text', placeholder='Search audios...' class='w-full p-2 border border-gray-300 rounded')
+    //- Create Audio Button
+    div(class='w-full max-w-6xl flex justify-end mb-4')
+      a(href='/audios/create' class='bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800')
+        | Create New Audio
+
+    //- Check if there are audios
+    if audios.length > 0
+      //- audios Table
+      table(class='w-full max-w-6xl bg-white shadow-md rounded-lg overflow-hidden mb-8')
+        thead(class='bg-gray-800 text-white')
+          tr
+            th(class='p-4 text-left') 
+            th(class='p-4 text-left') Audio Name
+            th(class='p-4 text-left') Performer
+            th(class='p-4 text-left') Description
+            th(class='p-4 text-left') Duration
+            th(class='p-4 text-left') Actions
+
+        tbody
+          each audio, index in audios
+            tr(class=(index % 2 === 0 ? 'bg-gray-100' : 'bg-white'))
+              td(class='p-4')
+                img(src=audio.image alt=audio.name class='w-20 h-20 object-cover rounded-lg')
+              td(class='p-4')= audio.name
+              td(class='p-4 whitespace-nowrap')= audio.performer
+              td(class='p-4')= audio.desc
+              td(class='p-4')= audio.duration
+              td(class='p-4 flex mt-2')
+                a(href=`/audios/addAudioToAlbum/${audio._id}` class='text-green-500 hover:text-green-700 mr-2 text-4xl font-bold')
+                  p(class="ms-2") &#43; 
+                  p(class="text-xs text-black") Playlist
+                a(href=`/audios/addAudioToAlbum/${audio._id}` class='text-blue-500 hover:text-blue-700 mr-2 text-4xl font-bold')
+                  p(class="ms-[6px]") &#43; 
+                  p(class="text-xs  text-black") Album
+                a(href=`/audios/update/${audio._id}` class='text-yellow-500 hover:text-yellow-700 mr-2 text-4xl font-bold') 	&#11189; 
+                a(href=`/audios/delete/${audio._id}` class='text-red-500 hover:text-red-700 mr-2 text-3xl font-bold') &#10007;
+    else
+      //- No Audios Warning
+      div(class='w-full max-w-4xl bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative')
+        strong(class='font-bold') Warning!
+        span(class='block sm:inline') No audios found. Please add some audios.

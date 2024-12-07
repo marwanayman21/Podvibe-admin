@@ -1,0 +1,26 @@
+extends ../layout.pug
+block content
+    //- Form Container
+    div(class='w-full max-w-5xl bg-white shadow-md rounded-lg p-6 mx-auto')
+      h1(class='text-2xl font-bold mb-4') Create New Playlist
+    
+      //- enctype='multipart/form-data -> tells it to accept data type images
+      form( method='post' enctype='multipart/form-data')
+        //- Playlist Name
+        div(class='mb-4')
+          label(for='name' class='block text-gray-700 font-bold mb-2') Name
+          input(type='text', id='name', name='name', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- Main Image
+        div(class='mb-4')
+          label(for='image' class='block text-gray-700 font-bold mb-2') Playlist Image
+          input(type='file', id='image', name='image', accept='image/*', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- Description
+        div(class='mb-4')
+          label(for='desc' class='block text-gray-700 font-bold mb-2') Description
+          textarea(id='desc', name='desc', rows='2', required, class='w-full p-2 border border-gray-300 rounded') 
+
+        //- Submit Button
+        div(class='flex justify-end')
+          button(type='submit', class='bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800') Submit

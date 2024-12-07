@@ -1,0 +1,39 @@
+extends ../layout.pug
+block content
+    //- Form Container
+    div(class='w-full max-w-5xl bg-white shadow-md rounded-lg p-6 mx-auto')
+      h1(class='text-2xl font-bold mb-4') 
+        |Add audio into 
+        span(class='text-2xl text-green-600')= album.name 
+        |  Album 
+            
+      //- enctype='multipart/form-data -> tells it to accept data type images
+      form( method='post' enctype='multipart/form-data')
+        //- Album Name
+        div(class='mb-4')
+          label(for='name' class='block text-gray-700 font-bold mb-2') Name
+          input(type='text', id='name', name='name', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- performer
+        div(class='mb-4')
+          label(for='performer' class='block text-gray-700 font-bold mb-2') Performer
+          input(type='text', id='performer', name='performer', required, class='w-full p-2 border border-gray-300 rounded')
+        
+        //- Description
+        div(class='mb-4')
+          label(for='desc' class='block text-gray-700 font-bold mb-2') Description
+          textarea(id='desc', name='desc', rows='2', required, class='w-full p-2 border border-gray-300 rounded') 
+
+        //- Audio img
+        div(class='mb-4')
+          label(for='image' class='block text-gray-700 font-bold mb-2') Audio Image
+          input(type='file', id='image', name='image', accept='image/*', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- Audio file
+        div(class='mb-4')
+          label(for='audio' class='block text-gray-700 font-bold mb-2') Audio File
+          input(type='file', id='audio', name='audio', accept='audio/*', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- Submit Button
+        div(class='flex justify-end')
+          button(type='submit', class='bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800') Submit

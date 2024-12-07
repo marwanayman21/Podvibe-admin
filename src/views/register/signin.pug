@@ -1,0 +1,21 @@
+extends layout.pug
+
+block form
+    //- Form Container
+    div(class='w-full max-w-3xl bg-white shadow-md rounded-lg p-6 flex align-middle')
+      h1(class='text-2xl font-bold mb-4') Sign In
+
+      form( method='post' class='mt-10')
+        //- Email
+        div(class='mb-4')
+          label(for='email' class='block text-gray-700 font-bold mb-2') Email
+          input(type='email', id='email', name='email', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- Password
+        div(class='mb-4')
+          label(for='password' class='block text-gray-700 font-bold mb-2') Password
+          input(type='password', id='password', name='password', required, class='w-full p-2 border border-gray-300 rounded')
+
+        //- Submit Button
+        div(class='flex justify-end')
+          button(type='submit', class='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600') Sign In

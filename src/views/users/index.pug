@@ -1,0 +1,36 @@
+extends ../layout.pug
+block content
+    //- Search Bar
+    div(class='w-full max-w-6xl mb-4')
+      input(type='text', placeholder='Search users...' class='w-full p-2 border border-gray-300 rounded')
+    //- Create User Button
+    div(class='w-full max-w-6xl flex justify-end mb-4')
+      a(href='/users/create' class='bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800')
+        | Create New User
+
+    //- Check if there are users
+    if users.length > 0
+      //- users Table
+      table(class='w-full max-w-6xl bg-white shadow-md rounded-lg overflow-hidden mb-8')
+        thead(class='bg-gray-800 text-white')
+          tr
+            th(class='p-4 text-left') User Name
+            th(class='p-4 text-left') Gender
+            th(class='p-4 text-left') E-mail
+            th(class='p-4 text-left') isAdmin
+            th(class='p-4 text-left') Actions
+
+        tbody
+          each user, index in users
+            tr(class=(index % 2 === 0 ? 'bg-gray-100' : 'bg-white'))
+              td(class='p-4')= user.name
+              td(class='p-4')= user.gender
+              td(class='p-4')= user.email
+              td(class='p-4')= user.isAdmin ? "Yes" : "No"
+              td(class='p-4 flex mt-2')
+                a(href=`/users/delete/${user._id}` class='text-red-500 hover:text-red-700 mr-2 text-3xl font-bold') &#10007;
+    else
+      //- No Users Warning
+      div(class='w-full max-w-4xl bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative')
+        strong(class='font-bold') Warning!
+        span(class='block sm:inline') No users found. Please add some users.

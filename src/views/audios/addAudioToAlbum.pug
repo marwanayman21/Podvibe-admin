@@ -1,0 +1,31 @@
+extends ../layout.pug
+block content
+    h1(class='text-2xl font-bold mb-4')
+        | Add 
+        span(class='text-2xl text-green-600') #{audio.name}
+        |  to Album
+    //- Check if there are albums
+    if albums.length > 0
+      //- albums Table
+      table(class='w-full max-w-5xl bg-white shadow-md rounded-lg overflow-hidden mb-8')
+        thead(class='bg-gray-800 text-white')
+          tr
+            th(class='p-4 text-left') 
+            th(class='p-4 text-left') Album Name
+            th(class='p-4 text-left') Description
+            th(class='p-4 text-left') Actions
+
+        tbody
+          each album, index in albums
+            tr(class=(index % 2 === 0 ? 'bg-gray-100' : 'bg-white'))
+              td(class='p-4')
+                img(src=album.image alt=album.name class='w-20 h-20 object-cover rounded-lg')
+              td(class='p-4')= album.name
+              td(class='p-4')= album.desc
+              td(class='p-4')
+                a(href=`/audios/addAudioToAlbum1/${album._id}` class='text-green-500 hover:text-green-700 mr-2 text-4xl font-bold') &#43; 
+    else
+      //- No Albums Warning
+      div(class='w-full max-w-4xl bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative')
+        strong(class='font-bold') Warning!
+        span(class='block sm:inline') No albums found. Please add some albums.

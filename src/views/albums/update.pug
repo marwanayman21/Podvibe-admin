@@ -1,0 +1,30 @@
+extends ../layout.pug
+
+block content
+  //- Form Container
+  div(class='w-full max-w-5xl bg-white shadow-md rounded-lg p-6')
+    h1(class='text-2xl font-bold mb-4') Update Album
+
+    form(method='post' enctype='multipart/form-data')
+      //- Album Name
+      div(class='mb-4')
+        label(for='name' class='block text-gray-700 font-bold mb-2') Name
+        input(type='text', id='name', name='name', required, value=album.name, class='w-full p-2 border border-gray-300 rounded')
+
+      //- Album Image
+      div(class='mb-4')
+        label(for='image' class='block text-gray-700 font-bold mb-2') Album Image
+        input(type='file', id='image', name='image', accept='image/*', class='w-full p-2 border border-gray-300 rounded')
+        //- Show the existing image
+        if album.image
+          div(class='mt-2')
+            img(src=album.image alt=album.name class='w-16 h-16 object-cover rounded-lg ms-2')
+
+      //- Description
+      div(class='mb-4')
+        label(for='desc' class='block text-gray-700 font-bold mb-2') Description
+        textarea(id='desc', name='desc', rows='2', required, class='w-full p-2 border border-gray-300 rounded')= album.desc
+
+      //- Submit Button
+      div(class='flex justify-end')
+        button(type='submit', class='bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800') Update Album
